@@ -1,11 +1,12 @@
-/* Reset margin and height for full page coverage */
+
 body, html {
     height: 100%;
     margin: 0;
     padding-top: 50px;
 }
 
-/* Background container with bubbles */
+/*background styling*/
+
 .background {
     height: 100%;
     width: 100%;
@@ -61,7 +62,6 @@ body, html {
     }
 }
 
-/* Spread particles randomly across the screen */
 .particle {
     position: absolute;
     width: 10px;
@@ -75,68 +75,56 @@ body, html {
 .p1 {
     top: 80%;
     left: 10%;
-    animation-delay: 0s;
 }
 
 .p2 {
     top: 60%;
     left: 25%;
-    animation-delay: 1s;
 }
 
 .p3 {
     top: 40%;
     left: 50%;
-    animation-delay: 2s;
 }
 
 .p4 {
     top: 30%;
     left: 75%;
-    animation-delay: 3s;
 }
 
 .p5 {
     top: 10%;
     left: 15%;
-    animation-delay: 4s;
 }
 
 .p6 {
     top: 20%;
     left: 40%;
-    animation-delay: 5s;
 }
 
 .p7 {
     top: 50%;
     left: 85%;
-    animation-delay: 6s;
 }
 
 .p8 {
     top: 70%;
     left: 60%;
-    animation-delay: 7s;
 }
 
 .p9 {
     top: 90%;
     left: 90%;
-    animation-delay: 8s;
 }
 
 .p10 {
     top: 50%;
     left: 30%;
-    animation-delay: 9s;
 }
 
-/* Make particles smaller and appear more often */
 .particle {
     width: 8px;
     height: 8px;
-    animation-duration: 5s;
 }
 
 .p1, .p2, .p3, .p4, .p5, .p6, .p7, .p8, .p9, .p10 {
@@ -144,13 +132,14 @@ body, html {
     animation-delay: 0s;
 }
 
-/* Any content that you want to appear on top */
+/* Any content that needs to appear on top */
 .content {
     position: relative;
     z-index: 1;
 }
 
-/* Styles for the header and navigation */
+/*navbar styling*/
+
 #navbar {
     background-color: #f0f8ff09;
 }
@@ -158,7 +147,30 @@ body, html {
 #nav-title {
     color: white !important;
 }
+ 
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8%;
+  z-index: 999 !important; /* ensures it stays above other elements */
+  transition: box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+  color: #1a2434;
+}
 
+#navbar.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+#mode-btn {
+  padding: 2px;
+}
+
+/*fonts*/
 
 .inter-font {
     font-family: "Inter", sans-serif;
@@ -167,9 +179,17 @@ body, html {
     font-style: normal;
 }
 
-#mode-btn {
-    padding: 2px;
+
+.inconsolata-font {
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
+
+
+/*entry section styling*/
 
 .entry > .container {
     display: flex;
@@ -190,21 +210,9 @@ body, html {
     left: 10%;
 }
 
-.entry-description {
-    color: aliceblue;
-}
-
-.inconsolata-font {
-    font-family: "Inconsolata", monospace;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-}
-
-.entry-description h2,
 .entry-description p, .entry-description h1 {
     padding-left: 60px;
+    color: aliceblue;
 }
 
 .buttons-container {
@@ -229,12 +237,35 @@ body, html {
 
 .entry-description h2 {
     color: black;
+    padding-left: 60px;
     overflow: hidden; /* Hide overflow text */
     white-space: nowrap; /* Prevent wrapping */
     display: inline-block;
     border-right: 4px solid black; /* Cursor-like effect */
     animation: typing 4s steps(30) 1s forwards, blink 0.75s step-end infinite;
 }
+
+.floating-img {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+button{
+  pointer-events: auto;   /* Allow interaction again */
+  user-select: auto;  
+}
+
+
+/*about me section styling*/
+
 .about-me .container {
     display: flex;
     flex-direction: row;
@@ -250,7 +281,6 @@ body, html {
     font-weight: 400;
   }
 
-
 /* Customize the scrollbar for Webkit browsers */
 ::-webkit-scrollbar {
     width: 12px;
@@ -262,9 +292,9 @@ body, html {
   }
   
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2); /* Semi-transparent thumb */
+    background: rgba(0, 0, 0, 0.2); 
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  /* Adding shadow to thumb */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -276,7 +306,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4rem 0; /* Adjusted to give more space above and below */
+    margin: 4rem 0; 
   }
   
   /* Link containing the arrow */
@@ -291,30 +321,32 @@ body, html {
   
   /* Arrow icon animation when hovered */
   .arrow-link:hover {
-    transform: translateY(8px); /* Make the hover effect a bit stronger */
+    transform: translateY(8px); 
   }
   
   /* Style the arrow icon itself */
   .arrow-link svg {
     fill: #686cfc;
     transition: transform 0.3s ease;
-    width: 50px; /* Increase the size of the arrow */
-    height: 50px; /* Increase the size of the arrow */
-    stroke-width: 2; /* Make the stroke of the arrow thicker (bolder) */
-    transform: scale(1); /* Keep the arrow's initial size */
+    width: 50px; 
+    height: 50px; 
+    stroke-width: 2; 
+    transform: scale(1); 
   }
   
-  /* Optional: Hover effect for the arrow */
+  
   .arrow-link:hover svg {
-    fill: #a0a9f2;  /* Change color on hover */
-    transform: scale(1.3); /* Make the arrow bigger when hovered */
-    stroke-width: 3; /* Make the stroke even thicker on hover */
+    fill: #a0a9f2;  
+    transform: scale(1.3); 
+    stroke-width: 3;
   }
   
   /* Smooth scroll behavior */
   html {
     scroll-behavior: smooth;
   }
+
+  /*career path section styling*/
   
   :root {
 
@@ -329,7 +361,7 @@ body, html {
   }
   
  
-  /* Section Layout */
+
   .career-path-section {
     padding: 80px 0;
   }
@@ -396,7 +428,6 @@ body, html {
     background-color: var(--education-color);
   }
  
-  
   /* Timeline Content */
   .timeline-card {
     background-color: var(--card-bg);
@@ -477,7 +508,7 @@ body, html {
     color: var(--text-secondary);
   }
   
-  /* Skills */
+  /* Skills section styling*/
   .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -493,35 +524,13 @@ body, html {
     border: 1px solid #e9ecef;
   }
   
-  /* View Resume Button */
-  .view-resume-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--primary-color);
-    font-weight: 500;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all 0.3s;
-  }
   
-  .view-resume-btn:hover {
-    background-color: rgba(13, 110, 253, 0.1);
-  }
-  
-  .view-resume-btn i {
-    font-size: 1.1rem;
-  }
-  
-  /* Container styles */
   .container {
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 20px;
   }
   
-  /* Skills section styles */
   .skills-section {
     padding: 64px 0;
   ;
@@ -543,8 +552,7 @@ body, html {
     max-width: 36rem;
     margin: 0 ;
   }
-  
-  /* Tab buttons */
+
   .tab-buttons {
     display: flex;
     justify-content: start;
@@ -702,19 +710,6 @@ body, html {
   }
 
 
-  portfolio-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-}
-
-/* Header styles with animated element */
-.portfolio-header {
-    text-align: center;
-    margin-bottom: 5rem;
-    position: relative;
-}
-
 .glitch-text {
     font-size: 4rem;
     font-weight: 700;
@@ -756,6 +751,8 @@ body, html {
     margin: 0 auto;
     position: relative;
 }
+
+/*contact section styling*/
 
 .contact-section {
     margin-top: 4rem;
@@ -886,57 +883,38 @@ body, html {
   .submit-btn:hover {
     background-color: #2980b9;
   }
-  
 
-  .floating-img {
-    animation: floatUpDown 3s ease-in-out infinite;
-  }
-  
-  @keyframes floatUpDown {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  #about-me, .entry, #career-path {
-    pointer-events: none; /* Prevent interaction with the field */
-    user-select: none; 
-  }
 
-  .entry button{
-    pointer-events: auto;   /* Allow interaction again */
-    user-select: auto;  
-  }
-  #navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 8%;
-    z-index: 999 !important; /* ensures it stays above other elements */
-    transition: box-shadow 0.3s ease;
-    backdrop-filter: blur(10px);
-    font-weight: 500;
-    color: #1a2434;
-  }
+  /* Projects display section styles */
 
-  #navbar.scrolled {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  }
-
-/*newwwwwwwwwwwwwwwwwwwwwwwwww/*  
-  /* Computer frame styles */
-
- .projects .container {
+  .projects .container {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
     padding: 3rem 1rem;
   }
+
+  .scroll-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
   
+  .project-container {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .project {
+    flex: 0 0 100%;
+    flex-direction: column;
+    height: 100%;
+    width: 100vw;
+    color: white;
+    scroll-snap-align: start;
+
+  }
   .projects .title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -1016,14 +994,7 @@ body, html {
     padding: 0 16px;
   }
   
-  /* Project styles */
-  .project {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    color: white;
-  }
+
   
   .project-image-container {
     position: relative;
@@ -1134,7 +1105,6 @@ body, html {
     height: 16px;
   }
   
-  /* Tooltip styles */
   .details-tooltip {
     position: absolute;
     background-color: white;
@@ -1161,7 +1131,7 @@ body, html {
     color: #333;
   }
   
-  /* Computer base and stand */
+
   .computer-base {
     background-color: #444;
     height: 32px;
@@ -1237,10 +1207,15 @@ body, html {
     white-space: nowrap;
     border-width: 0;
   }
-  
 
+    
+/* Prevent interaction with the field */
+#about-me, .entry, #career-path, #skills ,#projects p,#projects h3, .project-tag, #projects h2, #contact h2, #contact p ,.contact-card h3, .contact-icon ,.computer-base, #page-counter{
+  pointer-events: none; 
+  user-select: none; 
+}
 
-  /* dark mode things*/
+  /* dark mode settings*/
   body.dark-mode .background{
     background: linear-gradient(135deg, #2e3b4e, #1a2434);
 
@@ -1298,16 +1273,9 @@ body, html {
     color: white;
   }
 
-  body.dark-mode .navbar-collapse{
-    backdrop-filter: blur(10px);
-    color: white;
-    background-color: rgba(255, 255, 255, 0.238);
-  }
-
 
   /*************************All media queries are here********************/
 
- 
   /*mobile super small - max 480px*/
   @media (max-width: 480px) {
 
@@ -1355,6 +1323,13 @@ body, html {
         background-color: rgba(255, 255, 255, 0.238);
       }
 
+      body.dark-mode .navbar-collapse a {
+        color: #000;
+      }
+
+      
+
+
       /* entry*/
 
       .entry{
@@ -1368,7 +1343,7 @@ body, html {
       }
 
       .entry h1{
-        font-size: 1.5rem;
+        font-size: 2rem;
         text-align: start;      
         padding-left: 0;
         color:#0d6efd;
@@ -1402,7 +1377,7 @@ body, html {
         padding-right: 0;
       }
 
-      
+
     /*about me*/
    
     .about-me .container div{
@@ -1462,7 +1437,7 @@ body, html {
       margin-top: 20px; 
     }
     .timeline-line{
-      left: 25%;                  /* reset to the left edge */
+      left: 25%;               
       transform: none;  
     }
     .card-title h3{
@@ -1518,6 +1493,10 @@ body, html {
     #projects h2{
       font-size: 2rem;
     }
+    .project-container{
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     .project-details{
       padding-right: 0;
@@ -1542,12 +1521,16 @@ body, html {
     .project-header{
       margin-top: 5%;
     }
+    #page-counter {
+      display: none;
+    }
+    
     
 
     /*contact*/
 
     .contact-section h2{
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .contact-header{
@@ -1563,8 +1546,8 @@ body, html {
     }
 
     .contact-icon{
-      height: min-content;
-      width: fit-content;
+      height: max-content;
+      width: max-content;
     }
 
     .contact-card h3{
@@ -1654,6 +1637,9 @@ body, html {
       backdrop-filter: blur(10px);
       color: white;
       background-color: rgba(255, 255, 255, 0.238);
+    }
+    body.dark-mode .navbar-collapse a {
+      color: #000;
     }
 
     /* entry*/
@@ -1758,7 +1744,7 @@ body, html {
     margin-top: 20px; 
   }
   .timeline-line{
-    left: 25%;                  /* reset to the left edge */
+    left: 25%;                
     transform: none;  
   }
   .card-title h3{
@@ -1808,12 +1794,15 @@ body, html {
     font-size: 0.9rem !important;
   }
 
-   /*projects*/
+
  /*projects*/
 
  #projects h2{
   font-size: 2.2rem;
 }
+#page-counter {
+    display: none;
+  }
  /*contact*/
 
  .contact-section h2{
@@ -1834,8 +1823,8 @@ body, html {
 }
 
 .contact-icon{
-  height: min-content;
-  width: fit-content;
+  height: max-content;
+  width: max-content;
 }
 
 .contact-card h3{
