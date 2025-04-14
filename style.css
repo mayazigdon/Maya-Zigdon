@@ -210,9 +210,15 @@ body, html {
     left: 10%;
 }
 
-.entry-description p, .entry-description h1 {
+.entry-description p {
     padding-left: 60px;
-    color: aliceblue;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.entry-description h1{
+  padding-left: 60px;
+  color: white;
 }
 
 .buttons-container {

@@ -97,7 +97,7 @@
               <path
                 d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
             </svg></span>Maya Zigdon</h1>
-            <h2 class="inter-font" id="typing-title">Software Developer</h2>
+        <h2 class="inter-font" id="typing-title">Software Developer</h2>
         <p class="inconsolata-font">Building smooth, scalable full-stack web applications. Passionate about both
           frontend and backend development, I create solid, end-to-end solutions that are fast and easy to use.</p>
         <div class="buttons-container">
@@ -632,93 +632,93 @@
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
-  // Tabs
-  const languagesTab = document.getElementById('languages-tab');
-  const otherTab = document.getElementById('other-tab');
-  const languagesSkills = document.getElementById('languages-skills');
-  const otherSkills = document.getElementById('other-skills');
-  const tabTitle = document.getElementById('tab-title');
-  const skillsSection = document.querySelector('.skills-section');
+      // Tabs
+      const languagesTab = document.getElementById('languages-tab');
+      const otherTab = document.getElementById('other-tab');
+      const languagesSkills = document.getElementById('languages-skills');
+      const otherSkills = document.getElementById('other-skills');
+      const tabTitle = document.getElementById('tab-title');
+      const skillsSection = document.querySelector('.skills-section');
 
-  // Initial animation
-  animateCards(languagesSkills);
+      // Initial animation
+      animateCards(languagesSkills);
 
-  languagesTab.addEventListener('click', () => {
-    languagesTab.classList.add('active');
-    otherTab.classList.remove('active');
-    languagesSkills.style.display = 'grid';
-    otherSkills.style.display = 'none';
-    tabTitle.textContent = 'Programming Languages';
-    resetAndAnimateCards(languagesSkills);
-  });
-
-  otherTab.addEventListener('click', () => {
-    otherTab.classList.add('active');
-    languagesTab.classList.remove('active');
-    otherSkills.style.display = 'grid';
-    languagesSkills.style.display = 'none';
-    tabTitle.textContent = 'Other Skills';
-    resetAndAnimateCards(otherSkills);
-  });
-
-  function animateCards(container) {
-  const cards = container.querySelectorAll('.skill-card');
-  cards.forEach((card, index) => {
-    card.style.animationDelay = `${index * 100}ms`;
-    card.classList.add('fade-in');
-  });
-}
-  function resetAndAnimateCards(container) {
-  const cards = container.querySelectorAll('.skill-card');
-  cards.forEach(card => {
-    card.classList.remove('fade-in');
-    void card.offsetWidth; // trigger reflow
-    card.classList.add('fade-in');
-  });
-}
-
-
-  // Observer to re-trigger animation on scroll into view
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const activeSkills = languagesSkills.style.display !== 'none' ? languagesSkills : otherSkills;
-        resetAndAnimateCards(activeSkills);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  observer.observe(skillsSection);
-});
-
-
-      // Scroll animations for project cards
-      const cards = document.querySelectorAll('.project-card');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      cards.forEach(card => observer.observe(card));
-
-      // Navbar scroll effect
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 0);
+      languagesTab.addEventListener('click', () => {
+        languagesTab.classList.add('active');
+        otherTab.classList.remove('active');
+        languagesSkills.style.display = 'grid';
+        otherSkills.style.display = 'none';
+        tabTitle.textContent = 'Programming Languages';
+        resetAndAnimateCards(languagesSkills);
       });
 
-      // Project navigation
-      const projectContainer = document.getElementById('project-container');
-      const prevButton = document.getElementById('prev-button');
-      const nextButton = document.getElementById('next-button');
-      const pageCounter = document.getElementById('page-counter');
-      const computerFrame = document.querySelector('.computer-frame');
-      let activeIndex = 0;
+      otherTab.addEventListener('click', () => {
+        otherTab.classList.add('active');
+        languagesTab.classList.remove('active');
+        otherSkills.style.display = 'grid';
+        languagesSkills.style.display = 'none';
+        tabTitle.textContent = 'Other Skills';
+        resetAndAnimateCards(otherSkills);
+      });
 
-      function renderAllProjects() {
-        projectContainer.innerHTML = projects.map((project, index) => `
+      function animateCards(container) {
+        const cards = container.querySelectorAll('.skill-card');
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 100}ms`;
+          card.classList.add('fade-in');
+        });
+      }
+      function resetAndAnimateCards(container) {
+        const cards = container.querySelectorAll('.skill-card');
+        cards.forEach(card => {
+          card.classList.remove('fade-in');
+          void card.offsetWidth; // trigger reflow
+          card.classList.add('fade-in');
+        });
+      }
+
+
+      // Observer to re-trigger animation on scroll into view
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const activeSkills = languagesSkills.style.display !== 'none' ? languagesSkills : otherSkills;
+            resetAndAnimateCards(activeSkills);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(skillsSection);
+    });
+
+
+    // Scroll animations for project cards
+    const cards = document.querySelectorAll('.project-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
+
+    // Navbar scroll effect
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 0);
+    });
+
+    // Project navigation
+    const projectContainer = document.getElementById('project-container');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    const pageCounter = document.getElementById('page-counter');
+    const computerFrame = document.querySelector('.computer-frame');
+    let activeIndex = 0;
+
+    function renderAllProjects() {
+      projectContainer.innerHTML = projects.map((project, index) => `
     <div class="project project-card">
       <div class="project-image-container">
         <img src="${project.image}" alt="${project.title}" class="project-image" />
@@ -749,19 +749,19 @@
     </div>
   `).join('');
 
-        const liveButtons = projectContainer.querySelectorAll('.live-button');
-        liveButtons.forEach(button => {
-          button.addEventListener('click', (e) => {
-            const url = e.currentTarget.getAttribute('data-url');
-            window.open(url, '_blank');
-          });
+      const liveButtons = projectContainer.querySelectorAll('.live-button');
+      liveButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const url = e.currentTarget.getAttribute('data-url');
+          window.open(url, '_blank');
         });
-      }
+      });
+    }
 
 
-      function renderProject() {
-        const project = projects[activeIndex];
-        projectContainer.innerHTML = `
+    function renderProject() {
+      const project = projects[activeIndex];
+      projectContainer.innerHTML = `
           <div class="project">
             <div class="project-image-container">
               <img src="${project.image}" alt="${project.title}" class="project-image" />
@@ -792,85 +792,97 @@
           </div>
         `;
 
-        pageCounter.textContent = `Project ${activeIndex + 1} of ${projects.length}`;
+      pageCounter.textContent = `Project ${activeIndex + 1} of ${projects.length}`;
 
-        const liveButton = projectContainer.querySelector('.live-button');
-        if (liveButton && project.liveUrl) {
-          liveButton.addEventListener('click', () => {
-            window.open(project.liveUrl, '_blank');
-          });
-        }
+      const liveButton = projectContainer.querySelector('.live-button');
+      if (liveButton && project.liveUrl) {
+        liveButton.addEventListener('click', () => {
+          window.open(project.liveUrl, '_blank');
+        });
       }
-      function isMobileView() {
-        return window.innerWidth <= 768;
-      }
+    }
+    function isMobileView() {
+      return window.innerWidth <= 768;
+    }
 
-      prevButton.addEventListener('click', () => {
-        if (isMobileView()) {
-          scrollToProject('prev');
+    prevButton.addEventListener('click', () => {
+      if (isMobileView()) {
+        scrollToProject('prev');
+      } else {
+        activeIndex = activeIndex > 0 ? activeIndex - 1 : projects.length - 1;
+        renderProject();
+      }
+    });
+
+    function scrollToProject(direction) {
+      const scrollWrapper = document.querySelector('.scroll-wrapper');
+      const projectWidth = scrollWrapper.offsetWidth;
+      const maxScrollLeft = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+
+      if (direction === 'next') {
+        if (scrollWrapper.scrollLeft + projectWidth >= maxScrollLeft - 5) {
+          // If at the end, go back to start
+          scrollWrapper.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-          activeIndex = activeIndex > 0 ? activeIndex - 1 : projects.length - 1;
-          renderProject();
-        }
-      });
-
-      function scrollToProject(direction) {
-        const scrollWrapper = document.querySelector('.scroll-wrapper');
-        const projectWidth = scrollWrapper.offsetWidth;
-
-        if (direction === 'next') {
           scrollWrapper.scrollBy({ left: projectWidth, behavior: 'smooth' });
-        } else if (direction === 'prev') {
+        }
+      } else if (direction === 'prev') {
+        if (scrollWrapper.scrollLeft - projectWidth <= 0) {
+          // If at the beginning, go to end
+          scrollWrapper.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+        } else {
           scrollWrapper.scrollBy({ left: -projectWidth, behavior: 'smooth' });
         }
       }
+    }
 
-      nextButton.addEventListener('click', () => {
-        if (isMobileView()) {
-          scrollToProject('next');
-        } else {
-          activeIndex = activeIndex < projects.length - 1 ? activeIndex + 1 : 0;
-          renderProject();
-        }
-      });
 
-      document.addEventListener('keydown', (e) => {
-        if (!isMobileView()) {
-          if (e.key === 'ArrowLeft') prevButton.click();
-          if (e.key === 'ArrowRight') nextButton.click();
-        }
-      });
-
-      computerFrame.addEventListener('mouseenter', () => {
-        computerFrame.style.transform = 'translateY(-5px)';
-      });
-      computerFrame.addEventListener('mouseleave', () => {
-        computerFrame.style.transform = 'translateY(0)';
-      });
-
-      function initializeProjects() {
-        if (isMobileView()) {
-          renderAllProjects(); // enable scroll for mobile
-          projectContainer.classList.add("scroll-enabled");
-        } else {
-          renderProject(); // single project + navigation for desktop
-          projectContainer.classList.remove("scroll-enabled");
-        }
+    nextButton.addEventListener('click', () => {
+      if (isMobileView()) {
+        scrollToProject('next');
+      } else {
+        activeIndex = activeIndex < projects.length - 1 ? activeIndex + 1 : 0;
+        renderProject();
       }
+    });
 
-      initializeProjects();
-      window.addEventListener("resize", initializeProjects);
-      // Dark mode toggle
-      const modeBtn = document.getElementById("mode-btn");
-      const body = document.getElementById("page-body");
-      modeBtn.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        modeBtn.textContent = body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
-      });
+    document.addEventListener('keydown', (e) => {
+      if (!isMobileView()) {
+        if (e.key === 'ArrowLeft') prevButton.click();
+        if (e.key === 'ArrowRight') nextButton.click();
+      }
+    });
+
+    computerFrame.addEventListener('mouseenter', () => {
+      computerFrame.style.transform = 'translateY(-5px)';
+    });
+    computerFrame.addEventListener('mouseleave', () => {
+      computerFrame.style.transform = 'translateY(0)';
+    });
+
+    function initializeProjects() {
+      if (isMobileView()) {
+        renderAllProjects(); // enable scroll for mobile
+        projectContainer.classList.add("scroll-enabled");
+      } else {
+        renderProject(); // single project + navigation for desktop
+        projectContainer.classList.remove("scroll-enabled");
+      }
+    }
+
+    initializeProjects();
+    window.addEventListener("resize", initializeProjects);
+    // Dark mode toggle
+    const modeBtn = document.getElementById("mode-btn");
+    const body = document.getElementById("page-body");
+    modeBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      modeBtn.textContent = body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+    });
 
     document.addEventListener("DOMContentLoaded", function () {
       const items = document.querySelectorAll(".timeline-item");
-  
+
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach((entry, index) => {
@@ -885,7 +897,7 @@
           threshold: 0.1
         }
       );
-  
+
       items.forEach((item, index) => {
         item.style.setProperty('--delay', `${index * 0.5}s`);
         observer.observe(item);
@@ -894,7 +906,7 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       const typingTarget = document.getElementById("typing-title");
-  
+
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
@@ -907,33 +919,33 @@
         },
         { threshold: 0.6 }
       );
-  
+
       observer.observe(typingTarget);
     });
 
     document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".skill-card");
+      const cards = document.querySelectorAll(".skill-card");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-          } else {
-            // Remove this line if you want it to animate only once
-            entry.target.classList.remove("animate-in");
-          }
-        });
-      },
-      {
-        threshold: 0.1, // adjust based on when you want animation to trigger
-      }
-    );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-in");
+            } else {
+              // Remove this line if you want it to animate only once
+              entry.target.classList.remove("animate-in");
+            }
+          });
+        },
+        {
+          threshold: 0.1, // adjust based on when you want animation to trigger
+        }
+      );
 
-    cards.forEach((card) => {
-      observer.observe(card);
+      cards.forEach((card) => {
+        observer.observe(card);
+      });
     });
-  });
   </script>
 
 
