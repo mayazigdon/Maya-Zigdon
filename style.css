@@ -147,7 +147,7 @@ body, html {
 #nav-title {
     color: white !important;
 }
- 
+
 #navbar {
   position: fixed;
   top: 0;
@@ -167,7 +167,7 @@ body, html {
 
 
 #mode-btn {
-  padding: 2px;
+  padding: 3px 9px;
 }
 
 /*fonts*/
@@ -212,7 +212,7 @@ body, html {
 
 .entry-description p {
     padding-left: 60px;
-    color: var(--text-secondary);
+    color: rgb(95, 95, 95);
     font-weight: 600;
 }
 
@@ -287,8 +287,8 @@ button{
   }
 
   .about-me p {
-    color: var(--text-secondary);
-    font-weight: 400;
+    color: rgb(95, 95, 95);
+    font-weight: 600;
   }
 
 /* Customize the scrollbar for Webkit browsers */
@@ -412,9 +412,9 @@ button{
   
   .section-subtitle {
     font-size: 1.1rem;
-    color: var(--text-secondary);
+    color: rgb(95, 95, 95);
+    font-weight: 600;
     max-width: 700px;
-    font-weight: 400;
   }
   
   /* Timeline Container */
@@ -586,7 +586,8 @@ button{
   }
   
   .section-description {
-    color: #6b7280;
+    color: rgb(95, 95, 95);
+    font-weight: 600;
     max-width: 36rem;
     margin: 0 ;
   }
@@ -815,7 +816,8 @@ button{
   .contact-header p {
     font-size: 1rem;
     padding-right: 5rem;
-    color: #777;
+    color: rgb(95, 95, 95);
+    font-weight: 600;
   }
   
   .contact-container {
@@ -837,7 +839,7 @@ button{
   .contact-card {
     background-color: white;
     border-radius: 8px;
-    padding: 0.25rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -872,6 +874,7 @@ button{
   
   .contact-card p {
     color: #777;
+    margin: 0;
   }
   
   .contact-form-container {
