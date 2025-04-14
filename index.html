@@ -97,7 +97,7 @@
               <path
                 d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
             </svg></span>Maya Zigdon</h1>
-        <h2 class="inter-font">Software Developer</h2>
+            <h2 class="inter-font" id="typing-title">Software Developer</h2>
         <p class="inconsolata-font">Building smooth, scalable full-stack web applications. Passionate about both
           frontend and backend development, I create solid, end-to-end solutions that are fast and easy to use.</p>
         <div class="buttons-container">
@@ -632,46 +632,65 @@
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Tabs
-      const languagesTab = document.getElementById('languages-tab');
-      const otherTab = document.getElementById('other-tab');
-      const languagesSkills = document.getElementById('languages-skills');
-      const otherSkills = document.getElementById('other-skills');
-      const tabTitle = document.getElementById('tab-title');
+  // Tabs
+  const languagesTab = document.getElementById('languages-tab');
+  const otherTab = document.getElementById('other-tab');
+  const languagesSkills = document.getElementById('languages-skills');
+  const otherSkills = document.getElementById('other-skills');
+  const tabTitle = document.getElementById('tab-title');
+  const skillsSection = document.querySelector('.skills-section');
 
-      animateCards(languagesSkills);
+  // Initial animation
+  animateCards(languagesSkills);
 
-      languagesTab.addEventListener('click', () => {
-        languagesTab.classList.add('active');
-        otherTab.classList.remove('active');
-        languagesSkills.style.display = 'grid';
-        otherSkills.style.display = 'none';
-        tabTitle.textContent = 'Programming Languages';
-        resetAndAnimateCards(languagesSkills);
-      });
+  languagesTab.addEventListener('click', () => {
+    languagesTab.classList.add('active');
+    otherTab.classList.remove('active');
+    languagesSkills.style.display = 'grid';
+    otherSkills.style.display = 'none';
+    tabTitle.textContent = 'Programming Languages';
+    resetAndAnimateCards(languagesSkills);
+  });
 
-      otherTab.addEventListener('click', () => {
-        otherTab.classList.add('active');
-        languagesTab.classList.remove('active');
-        otherSkills.style.display = 'grid';
-        languagesSkills.style.display = 'none';
-        tabTitle.textContent = 'Other Skills';
-        resetAndAnimateCards(otherSkills);
-      });
+  otherTab.addEventListener('click', () => {
+    otherTab.classList.add('active');
+    languagesTab.classList.remove('active');
+    otherSkills.style.display = 'grid';
+    languagesSkills.style.display = 'none';
+    tabTitle.textContent = 'Other Skills';
+    resetAndAnimateCards(otherSkills);
+  });
 
-      function animateCards(container) {
-        const cards = container.querySelectorAll('.skill-card');
-        cards.forEach(card => card.classList.add('fade-in'));
+  function animateCards(container) {
+  const cards = container.querySelectorAll('.skill-card');
+  cards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 100}ms`;
+    card.classList.add('fade-in');
+  });
+}
+  function resetAndAnimateCards(container) {
+  const cards = container.querySelectorAll('.skill-card');
+  cards.forEach(card => {
+    card.classList.remove('fade-in');
+    void card.offsetWidth; // trigger reflow
+    card.classList.add('fade-in');
+  });
+}
+
+
+  // Observer to re-trigger animation on scroll into view
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeSkills = languagesSkills.style.display !== 'none' ? languagesSkills : otherSkills;
+        resetAndAnimateCards(activeSkills);
       }
+    });
+  }, { threshold: 0.3 });
 
-      function resetAndAnimateCards(container) {
-        const cards = container.querySelectorAll('.skill-card');
-        cards.forEach(card => {
-          card.classList.remove('fade-in');
-          void card.offsetWidth; // trigger reflow
-          card.classList.add('fade-in');
-        });
-      }
+  observer.observe(skillsSection);
+});
+
 
       // Scroll animations for project cards
       const cards = document.querySelectorAll('.project-card');
@@ -848,10 +867,74 @@
         body.classList.toggle("dark-mode");
         modeBtn.textContent = body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
       });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const items = document.querySelectorAll(".timeline-item");
+  
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate");
+            } else {
+              entry.target.classList.remove("animate");
+            }
+          });
+        },
+        {
+          threshold: 0.1
+        }
+      );
+  
+      items.forEach((item, index) => {
+        item.style.setProperty('--delay', `${index * 0.5}s`);
+        observer.observe(item);
+      });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const typingTarget = document.getElementById("typing-title");
+  
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              typingTarget.classList.remove("typing-animate"); // Reset animation
+              void typingTarget.offsetWidth; // Force reflow
+              typingTarget.classList.add("typing-animate");    // Re-add animation
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+  
+      observer.observe(typingTarget);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".skill-card");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          } else {
+            // Remove this line if you want it to animate only once
+            entry.target.classList.remove("animate-in");
+          }
+        });
+      },
+      {
+        threshold: 0.1, // adjust based on when you want animation to trigger
+      }
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
   </script>
-
-
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
